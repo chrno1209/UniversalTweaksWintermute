@@ -4,7 +4,7 @@ namespace UniversalTweaks;
 
 internal class TweaksSnowShelter
 {
-    [HarmonyPatch(typeof(SnowShelterManager), nameof(SnowShelterManager.InstantiateSnowShelter))]
+    [HarmonyPatch(typeof(SnowShelterManager), nameof(SnowShelterManager.GetPlayerOccupiedSnowShelter))]
     private static class SnowShelterDecayRate
     {
         private static void Postfix(ref SnowShelter __result)

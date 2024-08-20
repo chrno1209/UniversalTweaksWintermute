@@ -18,24 +18,24 @@ internal static class TextureSwapper
         return loadedTextures;
     }
 
-    internal static void SwapGearItemTexture(string gearItemName, string gameObjectName, string newTextureName)
-    {
-        if (!textures.TryGetValue(newTextureName, out var newTexture)) return;
+    //internal static void SwapGearItemTexture(string gearItemName, string gameObjectName, string newTextureName)
+    //{
+    //    if (!textures.TryGetValue(newTextureName, out var newTexture)) return;
 
-        var gearItemPrefab = GearItem.LoadGearItemPrefab(gearItemName);
-        if (gearItemPrefab == null) return;
+    //    var gearItemPrefab = GearItem.LoadGearItemPrefab(gearItemName);
+    //    if (gearItemPrefab == null) return;
 
-        foreach (var renderer in gearItemPrefab.GetComponentsInChildren<Renderer>(true))
-        {
-            if (renderer.gameObject.name == gameObjectName)
-            {
-                foreach (var material in renderer.materials)
-                {
-                    material.mainTexture = newTexture;
-                }
-            }
-        }
-    }
+    //    foreach (var renderer in gearItemPrefab.GetComponentsInChildren<Renderer>(true))
+    //    {
+    //        if (renderer.gameObject.name == gameObjectName)
+    //        {
+    //            foreach (var material in renderer.materials)
+    //            {
+    //                material.mainTexture = newTexture;
+    //            }
+    //        }
+    //    }
+    //}
 
     [HarmonyPatch(typeof(Utils), nameof(Utils.GetInventoryIconTexture), new Type[] { typeof(GearItem) })]
     private static class GenericIconTextureSwap

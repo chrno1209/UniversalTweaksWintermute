@@ -12,7 +12,7 @@ internal class TweaksTextureSwap
         {
             if (Settings.Instance.MRETextureVariant)
             {
-                TextureSwapper.SwapGearItemTexture("GEAR_MRE", "Obj_FoodMRE_LOD0", "GEAR_FoodBrownMRE_Dif");
+                //TextureSwapper.SwapGearItemTexture("GEAR_MRE", "Obj_FoodMRE_LOD0", "GEAR_FoodBrownMRE_Dif");
             }
         }
     }

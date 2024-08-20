@@ -1,51 +1,184 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<!-- These define the critical project details. Such as the net version, C# language version, null enable and do not generate assembly info (we need a custom one) -->
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<LangVersion>Latest</LangVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<DebugType>none</DebugType>
-	</PropertyGroup>
+  <!-- These define the critical project details. Such as the net version, C# language version, null enable and do not generate assembly info (we need a custom one) -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>Latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
 
-	<PropertyGroup>
-		<!-- This should point to wherever your games primary EXE is -->
-		<TheLongDarkPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark</TheLongDarkPath>
-		<ReleaseFolderPath>D:\The Long Dark\Projects\Maintained\UniversalTweaks\Release</ReleaseFolderPath>
-	</PropertyGroup>
+  <PropertyGroup>
+    <!-- This should point to wherever your games primary EXE is -->
+    <TheLongDarkPath>D:\Games\SteamLibrary\steamapps\common\wintermute</TheLongDarkPath>
+    <ReleaseFolderPath>.\bin\Release</ReleaseFolderPath>
+  </PropertyGroup>
 
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\UniversalTweaksAssetBundle" />
-	  <EmbeddedResource Include="Resources\Localization.json" />
-	</ItemGroup>
+  <!--This tells the compiler where to look for assemblies. Don't change it.-->
+  <PropertyGroup>
+    <MelonLoaderPath>$(TheLongDarkPath)/MelonLoader/net6</MelonLoaderPath>
+    <ManagedPath>$(TheLongDarkPath)/MelonLoader/Managed</ManagedPath>
+    <Il2CppPath>$(TheLongDarkPath)/MelonLoader/Il2CppAssemblies</Il2CppPath>
+    <ModsPath>$(TheLongDarkPath)/Mods</ModsPath>
+    <AssemblySearchPaths>$(AssemblySearchPaths);$(MelonLoaderPath);$(ManagedPath);$(Il2CppPath);$(ModsPath);</AssemblySearchPaths>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="TweaksContainer.cs" />
+    <Compile Remove="TweaksEncumber.cs" />
+    <Compile Remove="TweaksFood.cs" />
+    <Compile Remove="TweaksRespirator.cs" />
+    <Compile Remove="TweaksTravois.cs" />
+  </ItemGroup>
 
-	<!-- List of used references -->
-	<ItemGroup>
-		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.32.0" />
-		<PackageReference Include="STBlade.Modding.TLD.LocalizationUtilities" Version="2.0.0" />
-		<PackageReference Include="STBlade.Modding.TLD.ModSettings" Version="1.9.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UniversalTweaksAssetBundle" />
+    <EmbeddedResource Include="Resources\Localization.json" />
+  </ItemGroup>
 
-	<!-- Most commonly used using's. Add to this so you dont need to define them in the cs files -->
-	<ItemGroup>
-		<Using Include="System.Reflection" />
-		<Using Include="System.Diagnostics.CodeAnalysis" />
-		<Using Include="Il2Cpp" />
-		<Using Include="HarmonyLib" />
-		<Using Include="MelonLoader" />
-		<Using Include="UnityEngine" />
-		
-		<Using Include="LocalizationUtilities" />
-		<Using Include="ModSettings" />
-	</ItemGroup>
+  <!-- List of used references -->
+  <ItemGroup>
+  <Reference Include="0Harmony"></Reference>
+  <Reference Include="AsmResolver"></Reference>
+  <Reference Include="Assembly-CSharp"></Reference>
+  <Reference Include="Assembly-CSharp-firstpass"></Reference>
+  <Reference Include="Il2CppAk.Wwise.Api.WAAPI"></Reference>
+  <Reference Include="Il2CppAK.Wwise.Unity.API"></Reference>
+  <Reference Include="Il2CppAK.Wwise.Unity.API.WwiseTypes"></Reference>
+  <Reference Include="Il2CppAK.Wwise.Unity.MonoBehaviour"></Reference>
+  <Reference Include="Il2CppAK.Wwise.Unity.Timeline"></Reference>
+  <Reference Include="Il2Cppcom.rlabrecque.steamworks.net"></Reference>
+  <Reference Include="Il2CppDelaunayER"></Reference>
+  <Reference Include="Il2CppEasyRoads3Dv3"></Reference>
+  <Reference Include="Il2CppGdkUtilities"></Reference>
+  <Reference Include="Il2CppHOTween"></Reference>
+  <Reference Include="Il2CppInterop.Common"></Reference>
+  <Reference Include="Il2CppInterop.Runtime"></Reference>
+  <Reference Include="Il2CppMono.Security"></Reference>
+  <Reference Include="Il2Cppmscorlib"></Reference>
+  <Reference Include="Il2CppNavMeshComponents"></Reference>
+  <Reference Include="Il2CppNewtonsoft.Json"></Reference>
+  <Reference Include="Il2CppRewired_Core"></Reference>
+  <Reference Include="Il2CppRewired_Windows"></Reference>
+  <Reference Include="Il2CppRewired_Windows_Functions"></Reference>
+  <Reference Include="Il2CppSuperSplines"></Reference>
+  <Reference Include="Il2CppSystem"></Reference>
+  <Reference Include="Il2CppSystem.Configuration"></Reference>
+  <Reference Include="Il2CppSystem.Core"></Reference>
+  <Reference Include="Il2CppSystem.Data"></Reference>
+  <Reference Include="Il2CppSystem.Numerics"></Reference>
+  <Reference Include="Il2CppSystem.Runtime.Serialization"></Reference>
+  <Reference Include="Il2CppSystem.Xml"></Reference>
+  <Reference Include="Il2CppSystem.Xml.Linq"></Reference>
+  <Reference Include="Il2CppTLD.IO"></Reference>
+  <Reference Include="Il2CppTLD.Logging"></Reference>
+  <Reference Include="Il2CppTLD.Platform"></Reference>
+  <Reference Include="Il2CppTLD.Trial"></Reference>
+  <Reference Include="Il2CppXGamingRuntime"></Reference>
+  <Reference Include="Il2Cpp__Generated"></Reference>
+  <Reference Include="LocalizationUtilities"></Reference>
+  <Reference Include="MelonLoader"></Reference>
+  <Reference Include="ModSettings"></Reference>
+  <Reference Include="Unity.Analytics.DataPrivacy"></Reference>
+  <Reference Include="Unity.Analytics.StandardEvents"></Reference>
+  <Reference Include="Unity.Burst"></Reference>
+  <Reference Include="Unity.Burst.Unsafe"></Reference>
+  <Reference Include="Unity.Mathematics"></Reference>
+  <Reference Include="Unity.ScriptableBuildPipeline"></Reference>
+  <Reference Include="Unity.TextMeshPro"></Reference>
+  <Reference Include="Unity.Timeline"></Reference>
+  <Reference Include="UnityEngine"></Reference>
+  <Reference Include="UnityEngine.AccessibilityModule"></Reference>
+  <Reference Include="UnityEngine.AIModule"></Reference>
+  <Reference Include="UnityEngine.AndroidJNIModule"></Reference>
+  <Reference Include="UnityEngine.AnimationModule"></Reference>
+  <Reference Include="UnityEngine.ARModule"></Reference>
+  <Reference Include="UnityEngine.AssetBundleModule"></Reference>
+  <Reference Include="UnityEngine.AudioModule"></Reference>
+  <Reference Include="UnityEngine.ClothModule"></Reference>
+  <Reference Include="UnityEngine.ClusterInputModule"></Reference>
+  <Reference Include="UnityEngine.ClusterRendererModule"></Reference>
+  <Reference Include="UnityEngine.CoreModule"></Reference>
+  <Reference Include="UnityEngine.CrashReportingModule"></Reference>
+  <Reference Include="UnityEngine.DirectorModule"></Reference>
+  <Reference Include="UnityEngine.DSPGraphModule"></Reference>
+  <Reference Include="UnityEngine.GameCenterModule"></Reference>
+  <Reference Include="UnityEngine.GIModule"></Reference>
+  <Reference Include="UnityEngine.GridModule"></Reference>
+  <Reference Include="UnityEngine.HotReloadModule"></Reference>
+  <Reference Include="UnityEngine.ImageConversionModule"></Reference>
+  <Reference Include="UnityEngine.IMGUIModule"></Reference>
+  <Reference Include="UnityEngine.InputLegacyModule"></Reference>
+  <Reference Include="UnityEngine.InputModule"></Reference>
+  <Reference Include="UnityEngine.JSONSerializeModule"></Reference>
+  <Reference Include="UnityEngine.LocalizationModule"></Reference>
+  <Reference Include="UnityEngine.NVIDIAModule"></Reference>
+  <Reference Include="UnityEngine.ParticleSystemModule"></Reference>
+  <Reference Include="UnityEngine.PerformanceReportingModule"></Reference>
+  <Reference Include="UnityEngine.Physics2DModule"></Reference>
+  <Reference Include="UnityEngine.PhysicsModule"></Reference>
+  <Reference Include="UnityEngine.ProfilerModule"></Reference>
+  <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule"></Reference>
+  <Reference Include="UnityEngine.ScreenCaptureModule"></Reference>
+  <Reference Include="UnityEngine.SharedInternalsModule"></Reference>
+  <Reference Include="UnityEngine.SpriteMaskModule"></Reference>
+  <Reference Include="UnityEngine.SpriteShapeModule"></Reference>
+  <Reference Include="UnityEngine.StreamingModule"></Reference>
+  <Reference Include="UnityEngine.SubstanceModule"></Reference>
+  <Reference Include="UnityEngine.SubsystemsModule"></Reference>
+  <Reference Include="UnityEngine.TerrainModule"></Reference>
+  <Reference Include="UnityEngine.TerrainPhysicsModule"></Reference>
+  <Reference Include="UnityEngine.TextCoreFontEngineModule"></Reference>
+  <Reference Include="UnityEngine.TextCoreTextEngineModule"></Reference>
+  <Reference Include="UnityEngine.TextRenderingModule"></Reference>
+  <Reference Include="UnityEngine.TilemapModule"></Reference>
+  <Reference Include="UnityEngine.TLSModule"></Reference>
+  <Reference Include="UnityEngine.UI"></Reference>
+  <Reference Include="UnityEngine.UIElementsModule"></Reference>
+  <Reference Include="UnityEngine.UIElementsNativeModule"></Reference>
+  <Reference Include="UnityEngine.UIModule"></Reference>
+  <Reference Include="UnityEngine.UmbraModule"></Reference>
+  <Reference Include="UnityEngine.UNETModule"></Reference>
+  <Reference Include="UnityEngine.UnityAnalyticsModule"></Reference>
+  <Reference Include="UnityEngine.UnityConnectModule"></Reference>
+  <Reference Include="UnityEngine.UnityCurlModule"></Reference>
+  <Reference Include="UnityEngine.UnityTestProtocolModule"></Reference>
+  <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule"></Reference>
+  <Reference Include="UnityEngine.UnityWebRequestAudioModule"></Reference>
+  <Reference Include="UnityEngine.UnityWebRequestModule"></Reference>
+  <Reference Include="UnityEngine.UnityWebRequestTextureModule"></Reference>
+  <Reference Include="UnityEngine.UnityWebRequestWWWModule"></Reference>
+  <Reference Include="UnityEngine.VehiclesModule"></Reference>
+  <Reference Include="UnityEngine.VFXModule"></Reference>
+  <Reference Include="UnityEngine.VideoModule"></Reference>
+  <Reference Include="UnityEngine.VirtualTexturingModule"></Reference>
+  <Reference Include="UnityEngine.VRModule"></Reference>
+  <Reference Include="UnityEngine.WindModule"></Reference>
+  <Reference Include="UnityEngine.XRModule"></Reference>
+</ItemGroup>
 
-	<!-- This is a build event. It will copy your dll to the currently defined TheLongDarkPath's Mods folder -->
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<!-- This copies the mods files to the games mod dir -->
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TheLongDarkPath)/Mods" />
-		<!-- This copies the mods files to a designated release folder. Speeds up finding the dll after a build -->
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ReleaseFolderPath)" />
-	</Target>
+  <!-- Most commonly used using's. Add to this so you dont need to define them in the cs files -->
+  <ItemGroup>
+    <Using Include="System.Reflection" />
+    <Using Include="System.Diagnostics.CodeAnalysis" />
+    <Using Include="Il2Cpp" />
+    <Using Include="HarmonyLib" />
+    <Using Include="MelonLoader" />
+    <Using Include="UnityEngine" />
+
+    <Using Include="LocalizationUtilities" />
+    <Using Include="ModSettings" />
+  </ItemGroup>
+
+  <!-- This is a build event. It will copy your dll to the currently defined TheLongDarkPath's Mods folder -->
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <!-- This copies the mods files to the games mod dir -->
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TheLongDarkPath)/Mods" />
+    <!-- This copies the mods files to a designated release folder. Speeds up finding the dll after a build -->
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ReleaseFolderPath)" />
+  </Target>
 </Project>

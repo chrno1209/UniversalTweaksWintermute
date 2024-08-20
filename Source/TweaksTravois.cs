@@ -6,7 +6,7 @@ namespace UniversalTweaks;
 
 internal class TweaksTravois
 {
-    [HarmonyPatch(typeof(TravoisBigCarryItem), nameof(TravoisBigCarryItem.CanPerformInteractionWhileCarrying))]
+    [HarmonyPatch(typeof(BigCarryItem), nameof(BigCarryItem.CanPerformInteractionWhileCarrying))]
     private static class OverrideInteractionRestrictionsWhileCarrying
     {
         private static void Postfix(ref bool __result, IInteraction interaction)

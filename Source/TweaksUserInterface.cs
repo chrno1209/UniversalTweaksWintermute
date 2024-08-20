@@ -1,5 +1,4 @@
-﻿using Il2CppTLD.OptionalContent;
-using UniversalTweaks.Properties;
+﻿using UniversalTweaks.Properties;
 
 namespace UniversalTweaks;
 
@@ -115,33 +114,35 @@ internal class TweaksUserInterface
     //     }
     // }
     
-    [HarmonyPatch(typeof(Panel_MainMenu), nameof(Panel_MainMenu.Initialize))]
-    private class RemoveOptionalContentMenus
-    {
-        private static void Postfix(Panel_MainMenu __instance)
-        {
-            OptionalContentManager contentManager = OptionalContentManager.Instance;
-            bool hasWintermute = contentManager.IsContentOwned(__instance.m_WintermuteConfig);
 
-            if (Settings.Instance.RemoveMainMenuItems == true)
-            {
-                RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType.TFTFTUpsell, __instance);
-                if (!hasWintermute)
-                {
-                    RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType.Story, __instance);
-                }
-            }
-        }
 
-        private static void RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType removeType, Panel_MainMenu __instance)
-        {
-            for (var i = __instance.m_MenuItems.Count - 1; i >= 0; i--)
-            {
-                if (__instance.m_MenuItems[i].m_Type == removeType)
-                {
-                    __instance.m_MenuItems.RemoveAt(i);
-                }
-            }
-        }
-    }
+    //[HarmonyPatch(typeof(Panel_MainMenu), nameof(Panel_MainMenu.Initialize))]
+    //private class RemoveOptionalContentMenus
+    //{
+    //    private static void Postfix(Panel_MainMenu __instance)
+    //    {
+    //        OptionalContentManager contentManager = OptionalContentManager.Instance;
+    //        bool hasWintermute = contentManager.IsContentOwned(__instance.m_WintermuteConfig);
+
+    //        if (Settings.Instance.RemoveMainMenuItems == true)
+    //        {
+    //            RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType.TFTFTUpsell, __instance);
+    //            if (!hasWintermute)
+    //            {
+    //                RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType.Story, __instance);
+    //            }
+    //        }
+    //    }
+
+    //    private static void RemoveMainMenuItem(Panel_MainMenu.MainMenuItem.MainMenuItemType removeType, Panel_MainMenu __instance)
+    //    {
+    //        for (var i = __instance.m_MenuItems.Count - 1; i >= 0; i--)
+    //        {
+    //            if (__instance.m_MenuItems[i].m_Type == removeType)
+    //            {
+    //                __instance.m_MenuItems.RemoveAt(i);
+    //            }
+    //        }
+    //    }
+    //}
 }

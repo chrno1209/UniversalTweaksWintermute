@@ -1,5 +1,4 @@
-﻿using Il2CppTLD.IntBackedUnit;
-using UniversalTweaks.Properties;
+﻿using UniversalTweaks.Properties;
 
 namespace UniversalTweaks;
 
